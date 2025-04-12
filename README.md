@@ -1,1 +1,162 @@
+# GestureArt: AI-Powered Virtual Drawing Application
+
+GestureArt is a Python-based AI-powered virtual drawing application that allows users to draw in the air using finger gestures. The application uses a webcam to track hand movements and translates them into digital art on screen.
+
+![GestureArt Demo](docs/images/gestureart_demo.gif)
+
+## Features
+
+- **Intuitive Hand Tracking**: Precise hand and finger tracking using MediaPipe
+- **Advanced Gesture Recognition**: Intelligent recognition of multiple drawing and control gestures
+- **Dynamic Brush Tools**: Various brush styles, sizes, and effects
+- **AI-Powered Features**:
+  - Style transfer for applying artistic styles to drawings
+  - Smart color suggestions based on current palette
+  - Gesture-based text insertion with virtual keyboard
+- **Responsive UI**: Floating header with intuitive controls
+- **Performance Optimized**: Asynchronous processing and GPU acceleration
+- **Comprehensive Canvas Features**:
+  - Transparent background support
+  - Multiple save options
+  - Undo/redo functionality
+  - Layer management
+
+## System Requirements
+
+- Python 3.8 or higher
+- Webcam
+- 4GB RAM minimum (8GB recommended)
+- GPU support recommended for optimal performance
+- Operating System: Windows 10/11, macOS, or Linux
+
+## Installation
+
+# Create a virtual environment (recommended)
+python -m venv venv (or)
+py -3.10 -m venv py10-env 
+# On Windows: venv\Scripts\activate
+source venv/bin/activate (or) 
+.\py10-env\Scripts\Activate.ps1 
+
+# Install dependencies
+pip install -r requirements.txt
+or 
+pip install opencv-python mediapipe numpy tensorflow  
+
+# Launch the application
+python main.py
+```
+
+# Dependencies
+
+- OpenCV: Computer vision and image processing
+- MediaPipe: Hand tracking and landmark detection
+- NumPy: Numerical operations
+- TensorFlow: AI features including style transfer
+- Matplotlib: Visualization for testing and reports
+
+## Quick Start Guide
+
+1. Launch GestureArt using the installation instructions above
+2. Position your hand in front of the webcam
+3. Use the following gestures to draw and control the application:
+   - **Draw**: Index finger up, others down
+   - **Select**: Index and middle fingers up
+   - **Clear Canvas**: All fingers up
+   - **Undo**: Thumb and index form a "C" shape
+   - **Color Picker**: Index and pinky up
+   - **Brush Selector**: Ring and pinky up and thumb down
+   - **Save**: Thumb, index, and pinky up
+4. Experiment with different brushes, colors, and AI features
+
+## Gesture Controls
+
+| Gesture | Description | Action |
+|---------|-------------|--------|
+| ![Draw](docs/images/gesture_draw.png) | Index finger up, others down | Draw on canvas |
+| ![Select](docs/images/gesture_select.png) | Index and middle fingers up | Select UI elements |
+| ![Clear](docs/images/gesture_clear.png) | All fingers up | Clear canvas |
+| ![Undo](docs/images/gesture_undo.png) | Thumb and index form a "C" shape | Undo last action |
+| ![Color Pick](docs/images/gesture_color_pick.png) | Index and pinky up | Open color picker |
+| ![Tool Change](docs/images/gesture_tool_change.png) | Ring and pinky up and thumb down | Open brush selector |
+| ![Save](docs/images/gesture_save.png) | Thumb, index, and pinky up | Save canvas |
+
+## Architecture
+
+GestureArt is built with a modular architecture that separates concerns and allows for easy extension:
+
+1. **Hand Tracking Module**: Detects and tracks hand landmarks using MediaPipe
+2. **Gesture Recognition Module**: Interprets hand positions into meaningful gestures
+3. **Canvas Engine**: Manages drawing operations and canvas state
+4. **UI Module**: Handles user interface elements and interactions
+5. **AI Features Module**: Provides AI-powered capabilities like style transfer and color suggestions
+6. **Main Application**: Coordinates all modules and manages application flow
+
+## Advanced Usage
+
+### Command Line Arguments
+
+```bash
+python main.py --width 1280 --height 720 --camera 0 --fullscreen --debug
+```
+
+| Argument | Description | Default |
+|----------|-------------|---------|
+| --width | Width of the application window | 1280 |
+| --height | Height of the application window | 720 |
+| --camera | Camera device ID to use | 0 |
+| --fullscreen | Start in fullscreen mode | False |
+| --debug | Show debug information | False |
+
+### Configuration
+
+You can customize GestureArt by modifying the settings in the main application:
+
+```python
+# Settings
+self.settings = {
+    "hand_detection_confidence": 0.7,
+    "hand_tracking_confidence": 0.5,
+    "gesture_detection_threshold": 0.8,
+    "max_hands": 1,
+    "canvas_background_color": (255, 255, 255),
+    "auto_save": True,
+    "auto_save_interval": 300,  # seconds
+    "auto_save_dir": os.path.join(os.path.dirname(os.path.abspath(__file__)), "../output"),
+    "use_gpu": True
+}
+```
+
+## Testing and Performance
+
+GestureArt includes a comprehensive testing module that evaluates:
+
+- Hand tracking accuracy
+- Gesture recognition reliability
+- Canvas engine performance
+- UI responsiveness
+- AI features performance
+- End-to-end application performance
+
+Run the tests to generate detailed performance reports:
+
+```bash
+python optimization.py
+```
+
+
+## Acknowledgments
+
+- The MediaPipe team for their excellent hand tracking solution
+- TensorFlow team for the style transfer models
+- OpenCV community for computer vision tools
+- All contributors and testers who helped improve GestureArt
+
+## Contact
+
+For questions, feedback, or support, please open an issue on the GitHub repository or contact the maintainers directly.
+
+---
+
+© 2025 GestureArt Team
 # Gesture-Art

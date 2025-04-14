@@ -1,41 +1,36 @@
 import cv2
 import numpy as np
-import os
 import sys
-
-def run_basic_check():
-    print("Running basic GestureArt system check...")
+def check():
+    print("running system check for gestureart...")
     print("-" * 50)
     try:
         import mediapipe
         import tensorflow
-        print(f"OpenCV: {cv2.__version__}")
-        print(f"MediaPipe: {mediapipe.__version__}")
-        print(f"NumPy: {np.__version__}")
-        print(f"TensorFlow: {tensorflow.__version__}")
-    except Exception as e:
-        print(f"Error during dependency check: {e}")
+        print("opencv version:", cv2.__version__)
+        print("mediapipe version:", mediapipe.__version__)
+        print("numpy version:", np.__version__)
+        print("tensorflow version:", tensorflow.__version__)
+    except Exception as error:
+        print("problem with required libraries:", error)
         return False
-
     try:
-        cap = cv2.VideoCapture(0)
-        ret, frame = cap.read()
-        cap.release()
-        if not ret:
-            print("Camera check failed.")
+        camera = cv2.VideoCapture(0)
+        success, frame = camera.read()
+        camera.release()
+        if not success:
+            print("could not access camera.")
             return False
-    except Exception as e:
-        print(f"Camera access error: {e}")
+    except Exception as error:
+        print("camera error:", error)
         return False
-
-    print("✓ All basic checks PASSED")
+    print("✓ everything looks good")
     return True
-
 if __name__ == "__main__":
-    success = run_basic_check()
+    passed = check()
     print("-" * 50)
-    if success:
-        print("All tests PASSED! GestureArt is ready to run.")
+    if passed:
+        print("all tests passed! you can now run gestureart.")
     else:
-        print("Some checks FAILED. Please verify your setup.")
-    sys.exit(0 if success else 1)
+        print("some checks failed. please check the messages above.")
+    sys.exit(0 if passed else 1)
